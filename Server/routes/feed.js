@@ -14,4 +14,9 @@ router.post('/post',[
 
 router.get('/post/:postId', feedController.getPost);
 
+// update post
+router.put('/post/:postId',feedController.updatePost);
+
+// delete post 
+router.delete('post/:postId', feedController.deletePost);
 module.exports = router;
