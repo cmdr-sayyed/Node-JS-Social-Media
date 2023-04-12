@@ -18,7 +18,7 @@ exports.getPosts = (req, res, next) =>{
                posts: posts,
             totalItems: totalItems})
         })
-        .catch((err) =>{
+            .catch((err) =>{
             if(!err.statusCode){
                 err.statusCode = 500;
             }
