@@ -1,11 +1,12 @@
 const {validationResult} = require('express-validator');
 const Post = require('../models/post');
 const fs = require('fs');
-const path = require('path')
+const path = require('path');
+const post = require('../models/post');
 
 exports.getPosts = (req, res, next) =>{
     const currentPage = req.query.page || 1;
-    const perPage = 2; 
+    const perPage = 3; 
     let totalItems;
     Post.find().countDocuments()
         .then((count) =>{
@@ -39,7 +40,7 @@ exports.createPost = (req, res, next) =>{
         error.statusCode = 422;
         throw error;
     }
-    const imageUrl = req.file.path;
+    const imageUrl = req.file.path.replace("\\","/") ;
     const title = req.body.title; 
     const content= req. body.content; 
     const post = new Post({
@@ -93,7 +94,7 @@ exports.updatePost = (req, res, next) =>{
     const content = req.body.content;
     let imageUrl = req.body.image; 
     if(req.file) {
-        imageUrl = req.file.path;
+    const imageUrl = req.file.path.replace("\\","/") ;
     }
     if(!imageUrl){
         const error = new Error('No file Picked')

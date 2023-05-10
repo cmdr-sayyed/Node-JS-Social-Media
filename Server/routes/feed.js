@@ -5,7 +5,7 @@ const feedController = require('../controllers/feed')
 
 // GET/ feed/posts
 router.get('/posts', feedController.getPosts);
-
+ 
 // POST /feed/post
 router.post('/post',[
     body('title').trim().isLength({min:5}),
