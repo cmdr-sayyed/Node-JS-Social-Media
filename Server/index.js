@@ -40,14 +40,14 @@ app.use('/images', express.static(path.join(__dirname, 'images'))); // path join
 // CORS Handling 
 app.use((req, res, next)=>{
     res.setHeader('Access-Control-Allow-Origin','*');
-    res.setHeader('Access-Control-Allow-Method','GET, POST, PUT, DELETE, PATCH, OPTIONS');
+    res.setHeader('Access-Control-Allow-Methods','GET, POST, PUT, DELETE, PATCH, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers','Content-Type, Authorization');
     next();
 })
 
 // Routes 
 app.use('/feed', feedRoutes);
-app.use('/feed', authRoutes);
+app.use('/auth', authRoutes);
 app.use((error, req, res, next) =>{
     console.log(error);
     const status = error.statusCode || 500;
