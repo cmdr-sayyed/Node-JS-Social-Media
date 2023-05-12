@@ -1,7 +1,7 @@
 const router = require('express').Router(); 
 const { body } = require('express-validator/check');
 const User = require('../models/user');
-const authController = require('../controllers/auth')
+const authController = require('../controllers/auth');
 
 router.put('/signup',[
     body('email')
@@ -17,6 +17,8 @@ router.put('/signup',[
             .normalizeEmail(), 
     body('password').trim().isLength({min:7}), 
     body('name').trim().not().isEmpty()
-], authController.signup)
+], authController.signup); 
+
+router.post('/login', authController.login)
 
 module.exports = router; 
