@@ -1,6 +1,6 @@
 const User = require('../models/user');
 const {validationResult} = require('express-validator/check');
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 
@@ -10,7 +10,7 @@ exports.signup = (req, res, next) => {
         const error = new Error('Validation failed Please Insert the values Properly')
         error.statusCode = 422; 
         error.data = errors.array(); 
-        throw errors;
+        throw error;
     }
     const email = req.body.email; 
     const name = req.body.name; 
